@@ -36,7 +36,7 @@
               (above (rectangle 5 10 "solid" "black")       ;gun
                      (rectangle 20 10 "solid" "black"))))   ;main body
 
-(define TANK-HEIGHT/2 (/ (image-height TANK) 2))
+(define TANK-HEIGHT (image-height TANK))
 
 (define MISSILE (ellipse 5 15 "solid" "red"))
 
@@ -94,9 +94,9 @@
 ;; Missile is (make-missile Number Number)
 ;; interp. the missile's location is x y in screen coordinates
 
-(define M1 (make-missile 150 300))                       ;not hit U1
-(define M2 (make-missile (invader-x I1) (+ (invader-y I1) 10)))  ;exactly hit U1
-(define M3 (make-missile (invader-x I1) (+ (invader-y I1)  5)))  ;> hit U1
+(define M1 (make-missile 150 300))                       ;not hit I1
+(define M2 (make-missile (invader-x I1) (+ (invader-y I1) 10)))  ;exactly hit I1
+(define M3 (make-missile (invader-x I1) (+ (invader-y I1)  5)))  ;> hit I1
 
 #;
 (define (fn-for-missile m)
@@ -104,9 +104,9 @@
 
 
 
-(define G0 (make-game empty empty T0))
+(define G0 (make-game empty empty T0))              ;only tank T0
 (define G1 (make-game empty empty T1))
-(define G2 (make-game (list I1) (list M1) T1))
+(define G2 (make-game (list I1) (list M1) T1))      ;show I1, M1, T1
 (define G3 (make-game (list I1 I2) (list M1 M2) T1))
 
 ;; ListOfMissile is one of:
